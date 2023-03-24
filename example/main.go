@@ -5,8 +5,8 @@ import (
 	"io/ioutil"
 	"time"
 
-	"github.com/kermieisinthehouse/systray"
-	"github.com/kermieisinthehouse/systray/example/icon"
+	"github.com/5aaee9/systray"
+	"github.com/5aaee9/systray/example/icon"
 	"github.com/skratchdot/open-golang/open"
 )
 
@@ -23,6 +23,10 @@ func onReady() {
 	systray.SetTemplateIcon(icon.Data, icon.Data)
 	systray.SetTitle("Awesome App")
 	systray.SetTooltip("Lantern")
+
+	systray.SetOnLeftClick(func() {
+		println("left clicked")
+	})
 	mQuitOrig := systray.AddMenuItem("Quit", "Quit the whole app")
 	go func() {
 		<-mQuitOrig.ClickedCh

@@ -12,8 +12,11 @@ import (
 )
 
 var (
-	systrayReady  func()
-	systrayExit   func()
+	systrayReady func()
+	systrayExit  func()
+
+	onLeftClick func()
+
 	menuItems     = make(map[uint32]*MenuItem)
 	menuItemsLock sync.RWMutex
 
@@ -66,6 +69,10 @@ func newMenuItem(title string, tooltip string, parent *MenuItem) *MenuItem {
 		isCheckable: false,
 		parent:      parent,
 	}
+}
+
+func SetOnLeftClick(leftClick func()) {
+	onLeftClick = leftClick
 }
 
 // Run initializes GUI and starts the event loop, then invokes the onReady

@@ -1,4 +1,4 @@
-module github.com/kermieisinthehouse/systray
+module github.com/5aaee9/systray
 
 go 1.17
 
